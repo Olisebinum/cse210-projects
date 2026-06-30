@@ -68,4 +68,4 @@ class Program
             Console.WriteLine("Don't give up! Keep working hard and you'll do better next time.");
         }
     }
-}feat: complete Exercise 2 with grade calculator and pass/fail logic
+}
