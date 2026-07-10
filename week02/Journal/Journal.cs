@@ -50,9 +50,15 @@ public class Journal
     // text editor or re-used by other programs that understand JSON.
     public void SaveToFile(string filename)
     {
+        // IncludeFields = true is required here because Entry stores its
+        // data in public fields (_date, _promptText, _entryText) rather
+        // than properties. System.Text.Json only serializes properties
+        // by default, so without this flag every saved entry would come
+        // out as an empty JSON object.
         string json = JsonSerializer.Serialize(_entries, new JsonSerializerOptions
         {
-            WriteIndented = true
+            WriteIndented = true,
+            IncludeFields = true
         });
 
         File.WriteAllText(filename, json);
@@ -71,7 +77,10 @@ public class Journal
         }
 
         string json = File.ReadAllText(filename);
-        List<Entry> loadedEntries = JsonSerializer.Deserialize<List<Entry>>(json);
+        List<Entry> loadedEntries = JsonSerializer.Deserialize<List<Entry>>(json, new JsonSerializerOptions
+        {
+            IncludeFields = true
+        });
 
         _entries = loadedEntries ?? new List<Entry>();
         Console.WriteLine($"Journal loaded from {filename}. {_entries.Count} entries found.");
