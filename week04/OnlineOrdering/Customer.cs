@@ -9,9 +9,9 @@ public class Customer
         _address = address;
     }
 
-    public bool LivesInUSA()
+    public bool LivesInUsa()
     {
-        return _address.IsInUSA();
+        return _address.IsInUsa();
     }
 
     public string GetName()

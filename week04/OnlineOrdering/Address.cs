@@ -13,7 +13,7 @@ public class Address
         _country = country;
     }
 
-    public bool IsInUSA()
+    public bool IsInUsa()
     {
         return _country.Trim().ToLower() == "usa";
     }
