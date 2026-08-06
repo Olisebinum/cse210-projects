@@ -1,0 +1,4 @@
+790
+SimpleGoal|go to the gym everyday|exercise daily|20|True
+EternalGoal|study the scriptures|read my bible daily for at least 30 mins|50
+ChecklistGoal|attend the temple|go to the temple every sunday and participate |90|3|500|3
