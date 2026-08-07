@@ -22,7 +22,13 @@ public class EternalGoal : Goal
 
     public override string GetDetailsString()
     {
-        return $"[X] {_shortName}";
+        // Deliberately NOT "[X]" — that reads as "checked off / complete" to
+        // anyone looking at the output, even though IsComplete() always
+        // returns false and this goal can never actually be completed.
+        // "[~]" plus the explicit "(ongoing)" label makes the never-ending
+        // nature visually unambiguous instead of relying on someone reading
+        // the code to know [X] doesn't mean what it means everywhere else.
+        return $"[~] {_shortName} (ongoing)";
     }
 
     public override string GetStringRepresentation()
